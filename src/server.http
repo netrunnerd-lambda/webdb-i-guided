@@ -5,7 +5,16 @@
 GET {{posts}}
 
 ###
-GET {{posts}}/12
+GET {{posts}}/11
 
 ###
 DELETE {{posts}}/12
+
+###
+POST {{posts}}
+Content-Type: application/json
+
+{
+  "title": "post-eh",
+  "contents": "Do u even express?"
+}

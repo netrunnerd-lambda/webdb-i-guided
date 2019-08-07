@@ -70,4 +70,29 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  const newPost = req.body;
+
+  try {
+    let post = await db('posts').insert(newPost);
+    
+    if (post) {
+      const [id] = post;
+
+      [post] = await db('posts').where({id});
+
+      res.status(200).json({
+        post,
+        success: true
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error,
+      message: "Post could not be saved.",
+      success: false
+    });
+  }
+});
+
 module.exports = router;
