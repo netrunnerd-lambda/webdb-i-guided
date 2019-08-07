@@ -95,4 +95,28 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const updatedPost = req.body;
+
+  try {
+    let post = await db('posts').where({id}).update(updatedPost);
+
+    if (post) {
+      [post] = await db('posts').where({id});
+
+      res.status(200).json({
+        post,
+        success: true
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error,
+      message: "Post could not be modified.",
+      success: false
+    });
+  }
+});
+
 module.exports = router;

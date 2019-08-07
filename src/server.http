@@ -18,3 +18,11 @@ Content-Type: application/json
   "title": "post-eh",
   "contents": "Do u even express?"
 }
+
+###
+PUT {{posts}}/15
+Content-Type: application/json
+
+{
+  "contents": "Oh you do want to express?"
+}
