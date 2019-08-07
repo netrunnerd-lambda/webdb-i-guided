@@ -3,3 +3,6 @@
 
 ###
 GET {{posts}}
+
+###
+GET {{posts}}/1
